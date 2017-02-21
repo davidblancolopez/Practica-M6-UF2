@@ -2,6 +2,9 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +18,31 @@ public class Polissa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    
+    @Column(name = "numeroPolissa", length = 10, nullable = false)
+    private String numeroPolissa;
+    
+    @Column(name = "prenedor", nullable = false)
+    private Client nom;
+    
+    @Column(name = "vehicle", nullable = false)
+    private Vehicle vehicle;
+    
+    @Column(name = "dataInici", nullable = false)
+    private Calendar dataInici;
+    
+    @Column(name = "dataFi", nullable = false)
+    private Calendar dataFi;
+    
+    //MIRAR BIEN
+    @Column(name = "tipusPolissa", nullable = false)
+    private String tipusPolissa;
+    
+    @Column(name = "prima", nullable = false)
+    private double prima;
+    
+    //Falta llistaCobertures
+    
     public Long getId() {
         return id;
     }
