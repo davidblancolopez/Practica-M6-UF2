@@ -2,19 +2,61 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "M6UF2_VEHICLES")
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    
+    @Column(name = "matriculaVehicle", length = 7, nullable = false)
+    private String matricula;
+
+    @Column(name = "marca/modelVehicle", length = 50, nullable = false)
+    private String marca;
+    
+    @Column(name = "anyFabricacioVehicle", length = 9, nullable = false)
+    private int anyFabricacio;
+
+   //Falta propietari tipus client.
+
+    
+    //GETS I SETS
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public int getAnyFabricacio() {
+        return anyFabricacio;
+    }
+
+    public void setAnyFabricacio(int anyFabricacio) {
+        this.anyFabricacio = anyFabricacio;
+    }
+    
 
     public Long getId() {
         return id;
