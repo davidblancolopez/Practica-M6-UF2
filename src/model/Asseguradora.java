@@ -2,6 +2,7 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,31 @@ public class Asseguradora implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(name = "nomAsseguradora", length = 100, nullable = false)
+    private String nomAsseguradora;
+    
+    @Column(name = "nifAsseguradora", length = 100, nullable = false)
+    private String nifAsseguradora;
 
+    public String getNomAsseguradora() {
+        return nomAsseguradora;
+    }
+
+    public void setNomAsseguradora(String nomAsseguradora) {
+        this.nomAsseguradora = nomAsseguradora;
+    }
+
+    public String getNifAsseguradora() {
+        return nifAsseguradora;
+    }
+
+    public void setNifAsseguradora(String nifAsseguradora) {
+        this.nifAsseguradora = nifAsseguradora;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }
@@ -46,7 +71,9 @@ public class Asseguradora implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Asseguradora[ id=" + id + " ]";
+        return "Asseguradora{" + "id=" + id + ", nomAsseguradora=" + nomAsseguradora + ", nifAsseguradora=" + nifAsseguradora + '}';
     }
+
+
     
 }
