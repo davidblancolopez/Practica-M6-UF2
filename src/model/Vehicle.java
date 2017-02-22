@@ -29,7 +29,10 @@ public class Vehicle implements Serializable {
     @Column(name = "anyFabricacioVehicle", length = 9, nullable = false)
     private int anyFabricacio;
 
-   //Falta propietari tipus client.
+    @Column(name = "propietariVehicle", nullable = false)
+    private Client propietari;
+
+    
 
     
     //GETS I SETS
@@ -66,6 +69,14 @@ public class Vehicle implements Serializable {
         this.id = id;
     }
 
+    
+    public Client getPropietari() {
+        return propietari;
+    }
+
+    public void setPropietari(Client propietari) {
+        this.propietari = propietari;
+    }
     @Override
     public int hashCode() {
         int hash = 0;

@@ -22,10 +22,21 @@ public class Client implements Serializable {
     @Column(name = "nifClient", length = 9, nullable = false)
     private String nif;
 
-    @Column(name = "nomClient", length = 50, nullable = false)
+    @Column(name = "nomClient", nullable = false)
     private String nom;
 
-    //Fala ADRECA
+    @Column(name = "AdrecaClient", nullable = false)
+    private Adreca adreca;
+
+    
+    
+    public Client(Long id, String nif, String nom, Adreca adreca) {
+        this.id = id;
+        this.nif = nif;
+        this.nom = nom;
+        this.adreca = adreca;
+    }
+
 
     
     //GETS I SETS
@@ -54,6 +65,15 @@ public class Client implements Serializable {
         this.id = id;
     }
 
+    public Adreca getAdreca() {
+        return adreca;
+    }
+
+    public void setAdreca(Adreca adreca) {
+        this.adreca = adreca;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -76,7 +96,9 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Client[ id=" + id + " ]";
+        return "Client{" + "id=" + id + ", nif=" + nif + ", nom=" + nom + ", adreca=" + adreca + '}';
     }
+
+    
     
 }
