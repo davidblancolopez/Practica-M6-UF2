@@ -18,7 +18,9 @@ public class Polissa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     
+        
     @Column(name = "numeroPolissa", length = 10, nullable = false)
     private String numeroPolissa;
     
@@ -40,6 +42,55 @@ public class Polissa implements Serializable {
     
     @Column(name = "prima", nullable = false)
     private double prima;
+    
+    
+    public String getNumeroPolissa() {
+        return numeroPolissa;
+    }
+
+    public void setNumeroPolissa(String numeroPolissa) {
+        this.numeroPolissa = numeroPolissa;
+    }
+
+    public Client getNom() {
+        return nom;
+    }
+
+    public void setNom(Client nom) {
+        this.nom = nom;
+    }
+
+    public Calendar getDataInici() {
+        return dataInici;
+    }
+
+    public void setDataInici(Calendar dataInici) {
+        this.dataInici = dataInici;
+    }
+
+    public Calendar getDataFi() {
+        return dataFi;
+    }
+
+    public void setDataFi(Calendar dataFi) {
+        this.dataFi = dataFi;
+    }
+
+    public String getTipusPolissa() {
+        return tipusPolissa;
+    }
+
+    public void setTipusPolissa(String tipusPolissa) {
+        this.tipusPolissa = tipusPolissa;
+    }
+
+    public double getPrima() {
+        return prima;
+    }
+
+    public void setPrima(double prima) {
+        this.prima = prima;
+    }
     
     //Falta llistaCobertures
     
