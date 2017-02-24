@@ -1,8 +1,10 @@
 
 package controlador;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import model.*;
 
 
@@ -76,5 +78,31 @@ public class Client_controlador {
 
         System.out.println("close");
         em.close();
+    }
+    
+    
+    public void Consulta() {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("Consulta");
+        //List<Persona> lista = (List<Persona>) em.createQuery("FROM Persona").getResultList();
+        Query q = em.createQuery("FROM M6UF2_CLIENTS");
+        List<Client> lista = (List<Client>) q.getResultList();
+        imprimirLista(lista);
+
+        System.out.println("close");
+        em.close();
+    }
+    
+    public void imprimirLista(List<Client> lista) {
+        System.out.println("Numero d'empleats= " + lista.size());
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));
+        }
+    }
+
+    public void imprimirPersona(Client c) {
+        System.out.println(c);
     }
 }
