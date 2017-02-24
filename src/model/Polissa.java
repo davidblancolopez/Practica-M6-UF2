@@ -102,6 +102,20 @@ public class Polissa implements Serializable {
         this.id = id;
     }
 
+    public Polissa(Long id, String numeroPolissa, Client nom, Vehicle vehicle, Calendar dataInici, Calendar dataFi, String tipusPolissa, double prima) {
+        this.id = id;
+        this.numeroPolissa = numeroPolissa;
+        this.nom = nom;
+        this.vehicle = vehicle;
+        this.dataInici = dataInici;
+        this.dataFi = dataFi;
+        this.tipusPolissa = tipusPolissa;
+        this.prima = prima;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

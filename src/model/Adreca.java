@@ -20,6 +20,7 @@ public class Adreca implements Serializable {
         this.numero = numero;
     }
 
+
     public Adreca() {
     }
 

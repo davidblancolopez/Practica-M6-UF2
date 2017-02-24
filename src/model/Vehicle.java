@@ -77,6 +77,19 @@ public class Vehicle implements Serializable {
     public void setPropietari(Client propietari) {
         this.propietari = propietari;
     }
+
+    public Vehicle(Long id, String matricula, String marca, int anyFabricacio, Client propietari) {
+        this.id = id;
+        this.matricula = matricula;
+        this.marca = marca;
+        this.anyFabricacio = anyFabricacio;
+        this.propietari = propietari;
+    }
+    
+    
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

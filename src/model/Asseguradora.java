@@ -49,6 +49,15 @@ public class Asseguradora implements Serializable {
         this.id = id;
     }
 
+    public Asseguradora(Long id, String nomAsseguradora, String nifAsseguradora) {
+        this.id = id;
+        this.nomAsseguradora = nomAsseguradora;
+        this.nifAsseguradora = nifAsseguradora;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
