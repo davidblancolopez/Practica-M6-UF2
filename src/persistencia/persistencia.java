@@ -19,11 +19,11 @@ public class persistencia {
      * @param nom
      * @return 
      */
-    public Client cercaPerNif(String nom) {
-        Query q = em.createQuery("SELECT p FROM Client p WHERE p.nom=:nomP");
-        q.setParameter("nomP", nom);
-        return (Client) q.getSingleResult();
-    }
+//    public Client cercaPerNif(String nom) {
+//        Query q = em.createQuery("SELECT p FROM Client p WHERE p.nom=:nomP");
+//        q.setParameter("nomP", nom);
+//        return (Client) q.getSingleResult();
+//    }
     
     
     
