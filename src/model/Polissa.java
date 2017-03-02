@@ -53,6 +53,7 @@ public class Polissa implements Serializable {
     @Column (name = "primaPolissa", nullable = false)
     private double prima;
 
+   
     
     //GETTER i SETTER
     public Long getIdPolissa() {

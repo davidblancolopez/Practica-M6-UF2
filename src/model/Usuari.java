@@ -2,6 +2,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,19 +17,17 @@ public class Usuari implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    public static final String consulta = "usuariNom";
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    
     @Column(name = "usuariNom", length = 30, nullable = false)
     private String nom;
     
-    @Column(name = "personaCognom", length = 30, nullable = false)
-    private String cognom;
-
+    @Column(name = "contrasenyaUsuari", length = 30, nullable = false)
+    private String contrasenya;
     
     
+    //GETTER & SETTER
 
     public String getNom() {
         return nom;
@@ -38,44 +37,54 @@ public class Usuari implements Serializable {
         this.nom = nom;
     }
 
-    public String getCognom() {
-        return cognom;
+    public String getContrasenya() {
+        return contrasenya;
     }
 
-    public void setCognom(String cognom) {
-        this.cognom = cognom;
+    public void setContrasenya(String contrasenya) {
+        this.contrasenya = contrasenya;
     }
-    
 
-    public Usuari(String nom, String cognom) {
+    public Usuari(String nom, String contrasenya) {
         this.nom = nom;
-        this.cognom = cognom;
+        this.contrasenya = contrasenya;
     }
     
+    public Usuari(){
         
-    //    @Override
-//    public int hashCode() {
-//        int hash = 0;
-//        hash += (id != null ? id.hashCode() : 0);
-//        return hash;
-//    }
+    }
 
-//    @Override
-//    public boolean equals(Object object) {
-//        // TODO: Warning - this method won't work in the case the id fields are not set
-//        if (!(object instanceof Usuari)) {
-//            return false;
-//        }
-//        Usuari other = (Usuari) object;
-//        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-//            return false;
-//        }
-//        return true;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "model.Usuari[ id=" + id + " ]";
-//    }
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.nom);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuari other = (Usuari) obj;
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuari{" + "nom=" + nom + ", contrasenya=" + contrasenya + '}';
+    }
+   
+   
+ 
 
 }

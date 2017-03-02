@@ -8,6 +8,7 @@
     <class>model.Vehicle</class>
     <class>model.Polissa</class>
     <class>model.Asseguradora</class>
+    <class>model.Direccio</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.180.10:1521:INSLAFERRERI"/>
       <property name="javax.persistence.jdbc.user" value="DAVIDBLANCO"/>
