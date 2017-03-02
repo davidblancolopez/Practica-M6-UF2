@@ -133,20 +133,14 @@ public class Vehicle implements Serializable {
         return true;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
- 
-
     @Override
     public String toString() {
-        return "model.Vehicle[ id=" + idVehicle + " ]";
+        return "Vehicle{" + "idVehicle=" + idVehicle + ", matricula=" + matricula + ", marca=" + marca + ", anyFabricacio=" + anyFabricacio + ", propietari=" + propietari + ", polissa=" + polissa + '}';
     }
+
+    
+    
+    
+
     
 }
