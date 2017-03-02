@@ -2,40 +2,61 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "M6UF2_VEHICLES")
+@Table(name = "M6UF2_VEHICLES", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name="idVehicle", unique = true)
+    private Long idVehicle;
     
     
     @Column(name = "matriculaVehicle", length = 7, nullable = false)
     private String matricula;
 
-    @Column(name = "marca/modelVehicle", length = 50, nullable = false)
+    @Column(name = "marca/modelVehicle", length = 50)
     private String marca;
     
-    @Column(name = "anyFabricacioVehicle", length = 9, nullable = false)
+    @Column(name = "anyFabricacioVehicle")
     private int anyFabricacio;
 
-    @Column(name = "propietariVehicle", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idClient")
     private Client propietari;
+    
+    @OneToOne(mappedBy = "vehicle")
+    private Polissa polissa;
 
     
 
     
     //GETS I SETS
+
+    public Long getIdVehicle() {
+        return idVehicle;
+    }
+
+    public void setIdVehicle(Long idVehicle) {
+        this.idVehicle = idVehicle;
+    }
+
     public String getMatricula() {
         return matricula;
     }
@@ -59,17 +80,7 @@ public class Vehicle implements Serializable {
     public void setAnyFabricacio(int anyFabricacio) {
         this.anyFabricacio = anyFabricacio;
     }
-    
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    
     public Client getPropietari() {
         return propietari;
     }
@@ -78,41 +89,64 @@ public class Vehicle implements Serializable {
         this.propietari = propietari;
     }
 
-    public Vehicle(Long id, String matricula, String marca, int anyFabricacio, Client propietari) {
-        this.id = id;
+    public Polissa getPolissa() {
+        return polissa;
+    }
+
+    public void setPolissa(Polissa polissa) {
+        this.polissa = polissa;
+    }
+
+    public Vehicle(String matricula, String marca, int anyFabricacio) {
         this.matricula = matricula;
         this.marca = marca;
         this.anyFabricacio = anyFabricacio;
-        this.propietari = propietari;
     }
-    
-    
-    
+
+    public Vehicle() {
+    }
+
     
     
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.idVehicle);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vehicle)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Vehicle other = (Vehicle) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vehicle other = (Vehicle) obj;
+        if (!Objects.equals(this.idVehicle, other.idVehicle)) {
             return false;
         }
         return true;
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+
     @Override
     public String toString() {
-        return "model.Vehicle[ id=" + id + " ]";
+        return "model.Vehicle[ id=" + idVehicle + " ]";
     }
     
 }
