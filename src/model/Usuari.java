@@ -8,12 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
-
-
+@NamedQueries({
+@NamedQuery(name="usuariNom", query="SELECT p FROM Persona p WHERE p.nom=:nom"),
+@NamedQuery(name="usuariPassword", query="SELECT p FROM Persona p WHERE p.pass=:pass")
+})
 @Table(name = "M6UF2_USUARIS")
 public class Usuari implements Serializable {
 
