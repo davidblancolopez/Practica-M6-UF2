@@ -1,6 +1,8 @@
 
 package controlador;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import model.Adreca;
 
 public class Adreca_Controlador {
