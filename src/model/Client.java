@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name="clientNom", query="SELECT p FROM Persona p WHERE p.nomClient =: nom")
+@NamedQuery(name="clientNom", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
 })
 
 
