@@ -93,7 +93,7 @@ public class Asseguradora_Controlador {
         return p;
     }
     
-    public Usuari BuscarPerNom(String nom) {
+    public Asseguradora BuscarPerNom(String nom) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
@@ -101,7 +101,7 @@ public class Asseguradora_Controlador {
         //Query query = em.createNamedQuery("PersonaNom",Persona.class);
         Query query = em.createNamedQuery(Usuari.consulta,Usuari.class);
         query.setParameter("nombre", nom);
-        Usuari p = (Usuari) query.getSingleResult();
+        Asseguradora p = (Asseguradora) query.getSingleResult();
 
         System.out.println("close");
         em.close();

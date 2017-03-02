@@ -5,9 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import model.Asseguradora;
 import model.Client;
-import model.Usuari;
+
 
 
 public class Client_Controlador {
@@ -101,7 +100,7 @@ public class Client_Controlador {
 
         System.out.println("Busqueda per nom");
         //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery(Usuari.consulta,Usuari.class);
+        Query query = em.createNamedQuery(Client.consulta,Client.class);
         query.setParameter("nombre", nom);
         Client p = (Client) query.getSingleResult();
 
