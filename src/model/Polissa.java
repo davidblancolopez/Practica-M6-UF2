@@ -2,8 +2,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,35 +14,52 @@ import javax.persistence.Id;
 public class Polissa implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "idPolissa", unique = true)
+    private Long idPolissa;
 
     
         
-    @Column(name = "numeroPolissa", length = 10, nullable = false)
+    @Column(name = "numeroPolissa", length = 10)
     private String numeroPolissa;
     
     @Column(name = "prenedor", nullable = false)
     private Client nom;
     
-    @Column(name = "vehicle", nullable = false)
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clientId", nullable = false)
+    private Client prenedor;
+    
+    @OneToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicleId", nullable =  false)
     private Vehicle vehicle;
     
-    @Column(name = "dataInici", nullable = false)
-    private Calendar dataInici;
+    @Column (name = "dataInici", nullable = false)
+    private Date dataInici;
     
-    @Column(name = "dataFi", nullable = false)
-    private Calendar dataFi;
+    @Column (name = "dataFi", nullable = false)
+    private Date dataFi;
     
-    //MIRAR BIEN
-    @Column(name = "tipusPolissa", nullable = false)
-    private String tipusPolissa;
+    @Column (name = "tipusPolissa", nullable = false)
+    private boolean tipus;
     
-    @Column(name = "prima", nullable = false)
+    @Column (name = "primaPolissa", nullable = false)
     private double prima;
+
     
-    
+    //GETTER i SETTER
+    public Long getIdPolissa() {
+        return idPolissa;
+    }
+
+    public void setIdPolissa(Long idPolissa) {
+        this.idPolissa = idPolissa;
+    }
+
     public String getNumeroPolissa() {
         return numeroPolissa;
     }
@@ -60,28 +76,44 @@ public class Polissa implements Serializable {
         this.nom = nom;
     }
 
-    public Calendar getDataInici() {
+    public Client getPrenedor() {
+        return prenedor;
+    }
+
+    public void setPrenedor(Client prenedor) {
+        this.prenedor = prenedor;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Date getDataInici() {
         return dataInici;
     }
 
-    public void setDataInici(Calendar dataInici) {
+    public void setDataInici(Date dataInici) {
         this.dataInici = dataInici;
     }
 
-    public Calendar getDataFi() {
+    public Date getDataFi() {
         return dataFi;
     }
 
-    public void setDataFi(Calendar dataFi) {
+    public void setDataFi(Date dataFi) {
         this.dataFi = dataFi;
     }
 
-    public String getTipusPolissa() {
-        return tipusPolissa;
+    public boolean isTipus() {
+        return tipus;
     }
 
-    public void setTipusPolissa(String tipusPolissa) {
-        this.tipusPolissa = tipusPolissa;
+    public void setTipus(boolean tipus) {
+        this.tipus = tipus;
     }
 
     public double getPrima() {
@@ -91,35 +123,25 @@ public class Polissa implements Serializable {
     public void setPrima(double prima) {
         this.prima = prima;
     }
-    
-    //Falta llistaCobertures
-    
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Polissa(Long id, String numeroPolissa, Client nom, Vehicle vehicle, Calendar dataInici, Calendar dataFi, String tipusPolissa, double prima) {
-        this.id = id;
+    public Polissa(String numeroPolissa, Date dataInici, Date dataFi, boolean tipus, double prima) {
         this.numeroPolissa = numeroPolissa;
-        this.nom = nom;
-        this.vehicle = vehicle;
         this.dataInici = dataInici;
         this.dataFi = dataFi;
-        this.tipusPolissa = tipusPolissa;
+        this.tipus = tipus;
         this.prima = prima;
     }
 
-    
+    public Polissa() {
+    }
+
+
     
     
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idPolissa != null ? idPolissa.hashCode() : 0);
         return hash;
     }
 
@@ -130,7 +152,7 @@ public class Polissa implements Serializable {
             return false;
         }
         Polissa other = (Polissa) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idPolissa == null && other.idPolissa != null) || (this.idPolissa != null && !this.idPolissa.equals(other.idPolissa))) {
             return false;
         }
         return true;
@@ -138,7 +160,7 @@ public class Polissa implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Polissa[ id=" + id + " ]";
+        return "model.Polissa[ id=" + idPolissa + " ]";
     }
     
 }

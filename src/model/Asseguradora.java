@@ -13,15 +13,32 @@ import javax.persistence.Id;
 public class Asseguradora implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idAsseguradora;
     
-    @Column(name = "nomAsseguradora", length = 100, nullable = false)
+    @Column(name = "nomAsseguradora", length = 100, nullable = false, unique = true)
     private String nomAsseguradora;
     
-    @Column(name = "nifAsseguradora", length = 100, nullable = false)
+    @Column(name = "nifAsseguradora", nullable = false)
     private String nifAsseguradora;
+
+    public Asseguradora() {
+    }
+    
+    
+    
+    
+
+    public Long getIdAsseguradora() {
+        return idAsseguradora;
+    }
+
+    public void setIdAsseguradora(Long idAsseguradora) {
+        this.idAsseguradora = idAsseguradora;
+    }
 
     public String getNomAsseguradora() {
         return nomAsseguradora;
@@ -40,17 +57,9 @@ public class Asseguradora implements Serializable {
     }
 
     
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Asseguradora(Long id, String nomAsseguradora, String nifAsseguradora) {
-        this.id = id;
+        this.idAsseguradora = id;
         this.nomAsseguradora = nomAsseguradora;
         this.nifAsseguradora = nifAsseguradora;
     }
@@ -61,7 +70,7 @@ public class Asseguradora implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idAsseguradora != null ? idAsseguradora.hashCode() : 0);
         return hash;
     }
 
@@ -72,7 +81,7 @@ public class Asseguradora implements Serializable {
             return false;
         }
         Asseguradora other = (Asseguradora) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idAsseguradora == null && other.idAsseguradora != null) || (this.idAsseguradora != null && !this.idAsseguradora.equals(other.idAsseguradora))) {
             return false;
         }
         return true;
@@ -80,7 +89,7 @@ public class Asseguradora implements Serializable {
 
     @Override
     public String toString() {
-        return "Asseguradora{" + "id=" + id + ", nomAsseguradora=" + nomAsseguradora + ", nifAsseguradora=" + nifAsseguradora + '}';
+        return "Asseguradora{" + "id=" + idAsseguradora + ", nomAsseguradora=" + nomAsseguradora + ", nifAsseguradora=" + nifAsseguradora + '}';
     }
 
 

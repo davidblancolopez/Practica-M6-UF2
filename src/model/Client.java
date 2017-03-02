@@ -15,29 +15,57 @@ import javax.persistence.Table;
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idClient" , unique = true)
     private Long id;
+    
     
     @Column(name = "nifClient", length = 9, nullable = false)
     private String nif;
 
+    
     @Column(name = "nomClient", nullable = false)
     private String nom;
 
+    @OneToOne(cascade = {CascadeType.ALL})
     @Column(name = "AdrecaClient", nullable = false)
     private Adreca adreca;
 
+    @OneToMany(mappedBy = "vehicleId")
+    private Vehicle vehicle;
+    
+    @OneToOne(mappedBy = "prenedor")
+    private Polissa polissa;
     
     
-    public Client(Long id, String nif, String nom, Adreca adreca) {
-        this.id = id;
+    public Client(String nif, String nom) {
+       
         this.nif = nif;
         this.nom = nom;
-        this.adreca = adreca;
+        
     }
 
+    public Client() {
+   
+    }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //GETS I SETS
     public String getNif() {
@@ -72,6 +100,27 @@ public class Client implements Serializable {
     public void setAdreca(Adreca adreca) {
         this.adreca = adreca;
     }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Polissa getPolissa() {
+        return polissa;
+    }
+
+    public void setPolissa(Polissa polissa) {
+        this.polissa = polissa;
+    }
+    
+    
+    
+    
+    
     
     
     @Override

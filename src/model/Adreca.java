@@ -6,13 +6,30 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Table(name = "Adreca")
 public class Adreca implements Serializable {
 
-    @Column(name="street",length = 50, nullable = false)
+    private static final long serialVersionUID = 1L;
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "adrecaId", nullable = false, unique = true)
+    private Long id;
+
+    @Column(name = "carrer", length = 50, nullable = false)
     private String carrer;
-    @Column(length = 50,nullable = false)
-    private String poblacio;
+
+    @Column(name = "numero", nullable = false)
     private int numero;
+
+    @Column(name = "poblacio", length = 50, nullable = false)
+    private String poblacio;
+
+    @OneToOne(mappedBy = "adreca")
+    private Client client;
+
+    
 
     public Adreca(String carrer, String poblacio, int numero) {
         this.carrer = carrer;
@@ -22,6 +39,27 @@ public class Adreca implements Serializable {
 
 
     public Adreca() {
+    }
+
+    
+    
+    
+    
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getCarrer() {
