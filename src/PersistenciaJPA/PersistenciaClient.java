@@ -14,7 +14,7 @@ public class PersistenciaClient {
     }
 
     public List<Client> cercaPerNom(String nom) {
-        Query q = em.createNamedQuery("Persona.cercaPerNom", Client.class);
+        Query q = em.createNamedQuery("Client.cercaPerNom", Client.class);
         q.setParameter("nomP", nom);
         return q.getResultList();
     }
