@@ -42,32 +42,17 @@ public class Client implements Serializable {
     @Embedded
     private Adreca adreca;
 
-    public Client(Long id, String nif, String nom,String carrer, int numero, String poblacio) {
-        this.id = id;
+    public Client(String nif, String nom, String carrer, int numero, String poblacio) {
         this.nif = nif;
         this.nom = nom;
         this.adreca = new Adreca(carrer, numero, poblacio);
     }
 
     
-    
-    
-
     public Client() {
    
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -107,26 +92,6 @@ public class Client implements Serializable {
         this.adreca = adreca;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public Polissa getPolissa() {
-        return polissa;
-    }
-
-    public void setPolissa(Polissa polissa) {
-        this.polissa = polissa;
-    }
-    
-    
-    
-    
-    
     
     
     @Override
@@ -153,6 +118,8 @@ public class Client implements Serializable {
     public String toString() {
         return "Client{" + "id=" + id + ", nif=" + nif + ", nom=" + nom + ", adreca=" + adreca + '}';
     }
+
+
 
     
     
