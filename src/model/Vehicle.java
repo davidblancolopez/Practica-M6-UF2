@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 
 @NamedQueries({
-@NamedQuery(name="matriculaVehicle", query="SELECT p FROM M6UF2_VEHICLES p WHERE p.matriculaClient =: matricula")
+@NamedQuery(name="matriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
 })
 
 @Table(name = "M6UF2_VEHICLES", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})

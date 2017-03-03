@@ -15,18 +15,18 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name="usuariNom", query="SELECT p FROM Persona p WHERE p.nom=:nom"),
-@NamedQuery(name="usuariPassword", query="SELECT p FROM Persona p WHERE p.pass=:pass")
+@NamedQuery(name="nomUsuari", query="SELECT p FROM Persona p WHERE p.nom=:nom"),
+@NamedQuery(name="contrasenyaUsuari", query="SELECT p FROM Persona p WHERE p.pass=:pass")
 })
 @Table(name = "M6UF2_USUARIS")
 public class Usuari implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    public static final String consulta = "usuariNom";
+    public static final String consulta = "nomUsuari";
     
     @Id
-    @Column(name = "usuariNom", length = 30, nullable = false)
+    @Column(name = "nomUsuari", length = 30, nullable = false)
     private String nom;
     
     @Column(name = "contrasenyaUsuari", length = 30, nullable = false)

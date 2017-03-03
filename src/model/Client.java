@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name="clientNom", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
+@NamedQuery(name="nomClient", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
 })
 
 
@@ -26,7 +26,7 @@ public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     
     //String on posem el nom de la consulta que es realitzara en aquesta entity.
-    public static final String consulta = "clientNom";
+    public static final String consulta = "nomClient";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
