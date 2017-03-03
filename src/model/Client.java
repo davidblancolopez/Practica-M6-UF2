@@ -25,6 +25,9 @@ public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    //String on posem el nom de la consulta que es realitzara en aquesta entity.
+    public static final String consulta = "clientNom";
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idClient" , unique = true)

@@ -16,7 +16,7 @@ public class Client_Controlador {
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
 
-        // El persistim a la base de dades
+        //El persistim a la base de dades
         //em.getTransaction().begin();
         EntityTransaction etx = em.getTransaction();
 

@@ -8,15 +8,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
+@NamedQueries({
+@NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
+})
+
 public class Asseguradora implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    //String on posem el nom de la consulta que es realitzara en aquesta entity.
+    public static final String consulta = "numPolissa";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
