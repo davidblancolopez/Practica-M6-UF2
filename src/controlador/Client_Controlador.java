@@ -130,4 +130,8 @@ public class Client_Controlador {
             System.out.println(lista.get(i));
         }
     }
+
+    public void Consulta(Client client1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
