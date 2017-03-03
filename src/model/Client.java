@@ -55,9 +55,6 @@ public class Client implements Serializable {
 
     
     
-    
-    
-    
     //GETS I SETS
     public String getNif() {
         return nif;
