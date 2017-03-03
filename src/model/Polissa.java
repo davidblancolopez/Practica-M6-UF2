@@ -172,7 +172,10 @@ public class Polissa implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Polissa[ id=" + idPolissa + " ]";
+        return "Polissa{" + "idPolissa=" + idPolissa + ", numeroPolissa=" + numeroPolissa + ", nom=" + nom + ", prenedor=" + prenedor + ", vehicle=" + vehicle + ", dataInici=" + dataInici + ", dataFi=" + dataFi + ", tipus=" + tipus + ", prima=" + prima + '}';
     }
+
+
+    
     
 }
