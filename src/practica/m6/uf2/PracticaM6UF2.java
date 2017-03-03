@@ -17,7 +17,7 @@ public class PracticaM6UF2 {
            
             Client client1 = new Client (0, "55555555J", "David", "Sant Pepe", 9, "Montcada i Reixac");
             
-            Client_Controlador cc= new Client_Controlador();
+            Client_Controlador cc = new Client_Controlador();
             
             cc.Insertar(client1);
             
