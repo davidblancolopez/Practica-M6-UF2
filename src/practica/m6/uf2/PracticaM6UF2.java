@@ -2,7 +2,9 @@
 package practica.m6.uf2;
 
 import controlador.Client_Controlador;
+import controlador.Usuari_Controlador;
 import model.Client;
+import model.Usuari;
 
 
 public class PracticaM6UF2 {
@@ -18,6 +20,8 @@ public class PracticaM6UF2 {
             Client_Controlador cc= new Client_Controlador();
             
             cc.Insertar(client1);
+            
+           
 
         } catch (Exception ex) {
             ex.printStackTrace();
