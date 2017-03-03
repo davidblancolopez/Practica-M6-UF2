@@ -100,9 +100,9 @@ public class Polissa_Controlador {
 
         System.out.println("Busqueda per nom");
         //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery(Usuari.consulta,Usuari.class);
+        Query query = em.createNamedQuery(Polissa.consulta,Polissa.class);
         query.setParameter("nombre", nom);
-        Client p = (Client) query.getSingleResult();
+        Polissa p = (Polissa) query.getSingleResult();
 
         System.out.println("close");
         em.close();
