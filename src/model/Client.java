@@ -2,16 +2,14 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -41,23 +39,19 @@ public class Client implements Serializable {
     @Column(name = "nomClient", nullable = false)
     private String nom;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @Column(name = "AdrecaClient", nullable = false)
+    @Embedded
     private Adreca adreca;
 
-    @OneToMany(mappedBy = "vehicleId")
-    private Vehicle vehicle;
-    
-    @OneToOne(mappedBy = "prenedor")
-    private Polissa polissa;
-    
-    
-    public Client(String nif, String nom) {
-       
+    public Client(Long id, String nif, String nom,String carrer, int numero, String poblacio) {
+        this.id = id;
         this.nif = nif;
         this.nom = nom;
-        
+        this.adreca = new Adreca(carrer, numero, poblacio);
     }
+
+    
+    
+    
 
     public Client() {
    
