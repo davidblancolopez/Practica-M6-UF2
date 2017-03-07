@@ -110,7 +110,7 @@ public class Usuari_Controlador {
         return p;
     }
 
-    public void Consulta() {
+    public List<Usuari> ConsultaTots() {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
@@ -122,6 +122,8 @@ public class Usuari_Controlador {
 
         System.out.println("close");
         em.close();
+        
+        return lista;
     }
 
     public void imprimirLista(List<Usuari> lista) {
@@ -131,6 +133,8 @@ public class Usuari_Controlador {
         }
     }
 
-   
+    public void imprimirPersona(Usuari p) {
+        System.out.println(p);
+    }
     
 }
