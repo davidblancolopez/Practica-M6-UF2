@@ -15,8 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name="nomUsuari", query="SELECT p FROM Persona p WHERE p.nom=:nom"),
-@NamedQuery(name="contrasenyaUsuari", query="SELECT p FROM Persona p WHERE p.pass=:pass")
+@NamedQuery(name="nomUsuari", query="SELECT p FROM Usuari p WHERE p.nom=:nom"),
+@NamedQuery(name="contrasenyaUsuari", query="SELECT p FROM Usuari p WHERE p.pass=:pass")
 })
 @Table(name = "M6UF2_USUARIS")
 public class Usuari implements Serializable {
