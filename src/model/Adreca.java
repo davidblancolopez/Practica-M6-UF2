@@ -16,11 +16,6 @@ public class Adreca implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "adrecaId", nullable = false, unique = true)
-    private Long id;
 
     @Column(name = "carrer", length = 50, nullable = false)
     private String carrer;
@@ -31,10 +26,12 @@ public class Adreca implements Serializable {
     @Column(name = "poblacio", length = 50, nullable = false)
     private String poblacio;
 
-    @OneToOne(mappedBy = "adreca")
-    private Client client;
 
-    
+    /*
+
+
+
+    */
 
     public Adreca(String carrer, int numero, String poblacio) {
         this.carrer = carrer;
@@ -48,25 +45,6 @@ public class Adreca implements Serializable {
 
     
     
-    
-    
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public String getCarrer() {
         return carrer;
     }

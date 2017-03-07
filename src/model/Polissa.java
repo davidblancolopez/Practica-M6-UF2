@@ -3,19 +3,23 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table (name = "Polissas", indexes = {@Index(columnList = "prenedor", name = "indexPrenedor")})
 @NamedQueries({
 @NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
 })
@@ -152,19 +156,24 @@ public class Polissa implements Serializable {
     
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idPolissa != null ? idPolissa.hashCode() : 0);
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.idPolissa);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Polissa)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Polissa other = (Polissa) object;
-        if ((this.idPolissa == null && other.idPolissa != null) || (this.idPolissa != null && !this.idPolissa.equals(other.idPolissa))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Polissa other = (Polissa) obj;
+        if (!Objects.equals(this.idPolissa, other.idPolissa)) {
             return false;
         }
         return true;

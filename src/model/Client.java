@@ -16,8 +16,6 @@ import javax.persistence.Table;
 @NamedQueries({
 @NamedQuery(name="nomClient", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
 })
-
-
 @Table(name = "M6UF2_CLIENTS")
 public class Client implements Serializable {
 
@@ -32,20 +30,26 @@ public class Client implements Serializable {
     private Long id;
     
     
-    @Column(name = "nifClient", length = 9, nullable = false)
+    @Column(name = "nifClient", length = 9, nullable = false, unique = true)
     private String nif;
 
     
-    @Column(name = "nomClient", nullable = false)
+    @Column(name = "nomClient", length = 50)
     private String nom;
 
     @Embedded
     private Adreca adreca;
+    
+    /*
+    
+    
+    */
+    
+    
 
-    public Client(int id, String nif, String nom, String carrer, int numero, String poblacio) {
+    public Client(String nif, String nom) {
         this.nif = nif;
         this.nom = nom;
-        this.adreca = new Adreca(carrer, numero, poblacio);
     }
 
     
@@ -93,19 +97,24 @@ public class Client implements Serializable {
     
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 47 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Client)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Client other = (Client) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client other = (Client) obj;
+        if (this.id != other.id) {
             return false;
         }
         return true;

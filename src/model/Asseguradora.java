@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 
@@ -16,7 +17,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 @NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
 })
-
+@Table (name = "M6UF2_Asseguradores")
 public class Asseguradora implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,7 +38,10 @@ public class Asseguradora implements Serializable {
     public Asseguradora() {
     }
     
-    
+    public Asseguradora(String nomAsseguradora, String nifAsseguradora) {
+        this.nomAsseguradora = nomAsseguradora;
+        this.nifAsseguradora = nifAsseguradora;
+    }
     
     
 
@@ -67,14 +71,6 @@ public class Asseguradora implements Serializable {
 
     
 
-    public Asseguradora(Long id, String nomAsseguradora, String nifAsseguradora) {
-        this.idAsseguradora = id;
-        this.nomAsseguradora = nomAsseguradora;
-        this.nifAsseguradora = nifAsseguradora;
-    }
-
-    
-    
     
     @Override
     public int hashCode() {

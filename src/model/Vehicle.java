@@ -46,14 +46,10 @@ public class Vehicle implements Serializable {
     @Column(name = "anyFabricacioVehicle")
     private int anyFabricacio;
 
-    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idClient")
+    @OneToOne(fetch = FetchType.LAZY)
     private Client propietari;
-    
-    @OneToOne(mappedBy = "vehicle")
-    private Polissa polissa;
-
-    
+       
 
     
     //GETS I SETS
@@ -98,13 +94,6 @@ public class Vehicle implements Serializable {
         this.propietari = propietari;
     }
 
-    public Polissa getPolissa() {
-        return polissa;
-    }
-
-    public void setPolissa(Polissa polissa) {
-        this.polissa = polissa;
-    }
 
     public Vehicle(String matricula, String marca, int anyFabricacio) {
         this.matricula = matricula;
@@ -144,8 +133,10 @@ public class Vehicle implements Serializable {
 
     @Override
     public String toString() {
-        return "Vehicle{" + "idVehicle=" + idVehicle + ", matricula=" + matricula + ", marca=" + marca + ", anyFabricacio=" + anyFabricacio + ", propietari=" + propietari + ", polissa=" + polissa + '}';
+        return "Vehicle{" + "idVehicle=" + idVehicle + ", matricula=" + matricula + ", marca=" + marca + ", anyFabricacio=" + anyFabricacio + ", propietari=" + propietari + '}';
     }
+
+    
 
     
     
