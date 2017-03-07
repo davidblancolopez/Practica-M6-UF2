@@ -125,7 +125,7 @@ public class Usuari_Controlador {
     }
 
     public void imprimirLista(List<Usuari> lista) {
-        System.out.println("Numero d'usuaris= " + lista.size());
+        System.out.println("Numero d'usuaris = " + lista.size());
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
         }
