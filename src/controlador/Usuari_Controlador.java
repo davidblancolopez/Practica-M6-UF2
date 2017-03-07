@@ -116,7 +116,7 @@ public class Usuari_Controlador {
 
         System.out.println("Consulta");
         //List<Persona> lista = (List<Persona>) em.createQuery("FROM Persona").getResultList();
-        Query q = em.createQuery("FROM Usuari");
+        Query q = em.createQuery("FROM M6UF2_USUARIS");
         List<Usuari> lista = (List<Usuari>) q.getResultList();
         imprimirLista(lista);
 
