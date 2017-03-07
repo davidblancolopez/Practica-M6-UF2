@@ -40,11 +40,7 @@ public class Client implements Serializable {
     @Embedded
     private Adreca adreca;
     
-    /*
-    
-    
-    */
-    
+  
     
 
     public Client(String nif, String nom) {

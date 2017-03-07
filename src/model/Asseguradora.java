@@ -14,9 +14,6 @@ import javax.persistence.Table;
 
 
 @Entity
-@NamedQueries({
-@NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
-})
 @Table (name = "M6UF2_Asseguradores")
 public class Asseguradora implements Serializable {
 
