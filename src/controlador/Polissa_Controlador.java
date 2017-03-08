@@ -110,21 +110,21 @@ public class Polissa_Controlador {
         return p;
     }
     
-    public Polissa BuscarPerVehicle(String matricula) {
-        // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
-
-        System.out.println("Busqueda per vehicle");
-        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery(Polissa.consulta,Polissa.class);
-        query.setParameter("nombre", nom);
-        Polissa p = (Polissa) query.getSingleResult();
-
-        System.out.println("close");
-        em.close();
-
-        return p;
-    }
+//    public Polissa BuscarPerVehicle(String matricula) {
+//        // Recupera el entity manager
+//        EntityManager em = new EM_Controller().getEntityManager();
+//
+//        System.out.println("Busqueda per vehicle");
+//        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
+//        Query query = em.createNamedQuery(Polissa.consulta,Polissa.class);
+//        query.setParameter("nombre", nom);
+//        Polissa p = (Polissa) query.getSingleResult();
+//
+//        System.out.println("close");
+//        em.close();
+//
+//        return p;
+//    }
         
 
     public void Consulta() {
