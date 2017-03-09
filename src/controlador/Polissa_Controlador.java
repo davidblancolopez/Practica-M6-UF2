@@ -94,39 +94,66 @@ public class Polissa_Controlador {
         return p;
     }
     
-//    public Polissa BuscarPerNom(String nom) {
-//        // Recupera el entity manager
-//        EntityManager em = new EM_Controller().getEntityManager();
-//
-//        System.out.println("Busqueda per nom");
-//        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-//        Query query = em.createNamedQuery(Polissa.consulta,Polissa.class);
-//        query.setParameter("nombre", nom);
-//        Polissa p = (Polissa) query.getSingleResult();
-//
-//        System.out.println("close");
-//        em.close();
-//
-//        return p;
-//    }
-    
-//    public Polissa BuscarPerVehicle(String matricula) {
-//        // Recupera el entity manager
-//        EntityManager em = new EM_Controller().getEntityManager();
-//
-//        System.out.println("Busqueda per vehicle");
-//        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-//        Query query = em.createNamedQuery(Polissa.consulta,Polissa.class);
-//        query.setParameter("nombre", nom);
-//        Polissa p = (Polissa) query.getSingleResult();
-//
-//        System.out.println("close");
-//        em.close();
-//
-//        return p;
-//    }
-        
+    /**
+     * Buscar per client.
+     * @param idCLient
+     * @return 
+     */
+    public Polissa BuscarPerClient(String idClient) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
 
+        System.out.println("Busqueda per client");
+        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
+        Query query = em.createNamedQuery(Polissa.consultaPolises,Polissa.class);
+        query.setParameter("idClient", idClient);
+        Polissa p = (Polissa) query.getSingleResult();
+
+        System.out.println("close");
+        em.close();
+
+        return p;
+    }
+    
+    /**
+     * Buscar per vehicle.
+     * @param idVehicle
+     * @return 
+     */
+    public Polissa BuscarPerVehicle(String idVehicle) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("Busqueda per vehicle");
+        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
+        Query query = em.createNamedQuery(Polissa.consultaPolisesVehicle,Polissa.class);
+        query.setParameter("idVehicle", idVehicle);
+        Polissa p = (Polissa) query.getSingleResult();
+
+        System.out.println("close");
+        em.close();
+
+        return p;
+    }
+        
+    public Polissa BuscarTotes() {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("Busqueda per client");
+        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
+        Query query = em.createNamedQuery(Polissa.consultaTotesPolises,Polissa.class);
+//        query.setParameter("idClient", idClient);
+        Polissa p = (Polissa) query.getSingleResult();
+
+        System.out.println("close");
+        em.close();
+
+        return p;
+    }
+    
+    
+    
     public void Consulta() {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
