@@ -3,8 +3,10 @@ package practica.m6.uf2;
 
 import controlador.Client_Controlador;
 import controlador.Usuari_Controlador;
+import controlador.Vehicle_Controlador;
 import model.Client;
 import model.Usuari;
+import model.Vehicle;
 
 
 public class PracticaM6UF2 {
@@ -15,11 +17,65 @@ public class PracticaM6UF2 {
             try {
 
            
-            Client client1 = new Client ("5432334J", "David");
+            Usuari usu1 = new Usuari();
+            usu1.setNom("DAVID");
+            usu1.setContrasenya("1234");
             
-            Client_Controlador cc = new Client_Controlador();
-            
-            cc.Insertar(client1);
+            Vehicle vehi1 = new Vehicle();
+            vehi1.setMatricula("1111AAA");
+            vehi1.setMarca("Ferrari");
+            vehi1.setAnyFabricacio(1994);
+
+//            Persona persona2 = new Persona();
+//            persona2.setNombre("Emilio");
+//            persona2.setApellidos("Garcia");
+//            persona2.setEmail("emilio@garcia.net");
+//            persona2.setTelefono("876543219");
+//
+//            Direccio direccio1 = new Direccio();
+//            direccio1.setCarrer("Carrer1");
+//            direccio1.setCiutat("Montcada");
+//            direccio1.setCp("21345");
+//            direccio1.setPais("Espanya");
+//
+//            Direccio direccio2 = new Direccio();
+//            direccio2.setCarrer("Carrer2");
+//            direccio2.setCiutat("Reixac");
+//            direccio2.setCp("21346");
+//            direccio2.setPais("Espanya");
+//
+//            persona1.setDireccio(direccio1);
+//            persona2.setDireccio(direccio2);
+
+           // Usuari_Controller pc = new Usuari_Controller();
+            Vehicle_Controlador vc = new Vehicle_Controlador();
+//
+//            //1er INSERTEM LES PERSONES A LA BBDD I DESPRES COMENTEM LES 3 LINIES SEGUENTES
+            //pc.Insertar(usu1);
+            vc.Insertar(vehi1);
+////            pc.Insertar(persona2);
+           // List<Usuari> lista = pc.ConsultaTots();
+////            pc.imprimirLista(lista);
+//            //2n DESCOMENTEM LES 3 LINIES SEGUENTS, EXECUTEM LA @NamedQuery
+//            String nom = "Eric";
+//            Persona p = pc.BuscarPerNom(nom); //PRIMER IDPERSONA
+//            pc.imprimirPersona(p);
+
+            //3r DESCOMENTEM LES 8 LINIES SEGUENTS, OBTENIM ELS IDPERSONA CREATS A LA BBDD I ELS MODIFIQUEM
+//            Persona p = pc.Buscar(722L); //PRIMER IDPERSONA
+//            pc.imprimirPersona(p);
+//
+//            p.setNombre("Pepe");
+//            pc.Modificar(p);
+//
+//            p = pc.Buscar(741L); //SEGON IDPERSONA
+//            pc.imprimirPersona(p);
+//
+//            pc.Eliminar(p);
+//
+//            List<Persona> lista = pc.ConsultaTots();
+//            pc.imprimirLista(lista);
+            System.out.println("FI");
             
            
 

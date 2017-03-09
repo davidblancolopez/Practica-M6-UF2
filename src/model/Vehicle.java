@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 
 @NamedQueries({
-@NamedQuery(name="matriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
+@NamedQuery(name="buscarMatriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
 })
 
 @Table(name = "M6UF2_VEHICLES", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})
@@ -29,7 +29,7 @@ public class Vehicle implements Serializable {
     private static final long serialVersionUID = 1L;
     
     //String on posem el nom de la consulta que es realitzara en aquesta entity.
-    public static final String consulta = "matriculaVehicle";
+    public static final String consulta = "buscarMatriculaVehicle";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
