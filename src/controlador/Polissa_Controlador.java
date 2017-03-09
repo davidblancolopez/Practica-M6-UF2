@@ -135,7 +135,11 @@ public class Polissa_Controlador {
 
         return p;
     }
-        
+    
+    /**
+     * Buscar totes les polises.
+     * @return 
+     */
     public Polissa BuscarTotes() {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
