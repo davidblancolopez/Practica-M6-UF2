@@ -20,16 +20,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "M6UF2_Polissas", indexes = {@Index(columnList = "prenedor", name = "indexPrenedor")})
-@NamedQueries({
-@NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
-})
+//@NamedQueries({
+//@NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
+//})
 
 public class Polissa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     //String on posem el nom de la consulta que es realitzara en aquesta entity.
-    public static final String consulta = "numPolissa";
+//    public static final String consulta = "numPolissa";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

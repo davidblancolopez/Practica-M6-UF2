@@ -94,6 +94,11 @@ public class Client_Controlador {
         return p;
     }
     
+    /**
+     * Cerca del client per nom.
+     * @param nom
+     * @return 
+     */
     public Client BuscarPerNom(String nom) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
