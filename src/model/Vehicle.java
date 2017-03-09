@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -19,9 +20,9 @@ import javax.persistence.Table;
 
 @Entity
 
-@NamedQueries({
-@NamedQuery(name="buscarMatriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
-})
+//@NamedQueries({
+//@NamedQuery(name="buscarMatriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
+//})
 
 @Table(name = "M6UF2_VEHICLES", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})
 public class Vehicle implements Serializable {
@@ -29,7 +30,7 @@ public class Vehicle implements Serializable {
     private static final long serialVersionUID = 1L;
     
     //String on posem el nom de la consulta que es realitzara en aquesta entity.
-    public static final String consulta = "buscarMatriculaVehicle";
+//    public static final String consulta = "buscarMatriculaVehicle";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,9 +47,12 @@ public class Vehicle implements Serializable {
     @Column(name = "anyFabricacioVehicle")
     private int anyFabricacio;
 
+    @ManyToOne
     @JoinColumn(name = "idClient")
-    @OneToOne(fetch = FetchType.LAZY)
     private Client propietari;
+    
+    @OneToOne(mappedBy = "vehicle")
+    private Polissa polissa;
        
 
     

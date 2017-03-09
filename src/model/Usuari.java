@@ -14,16 +14,16 @@ import javax.persistence.Table;
 
 
 @Entity
-@NamedQueries({
-@NamedQuery(name="nomUsuari", query="SELECT p FROM Usuari p WHERE p.nom=:nom"),
-@NamedQuery(name="contrasenyaUsuari", query="SELECT p FROM Usuari p WHERE p.pass=:pass")
-})
+//@NamedQueries({
+//@NamedQuery(name="nomUsuari", query="SELECT p FROM Usuari p WHERE p.nom=:nom"),
+//@NamedQuery(name="contrasenyaUsuari", query="SELECT p FROM Usuari p WHERE p.pass=:pass")
+//})
 @Table(name = "M6UF2_USUARIS")
 public class Usuari implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    public static final String consulta = "nomUsuari";
+//    public static final String consulta = "nomUsuari";
     
     @Id
     @Column(name = "nomUsuari", length = 30, nullable = false)
