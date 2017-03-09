@@ -27,11 +27,6 @@ public class Adreca implements Serializable {
     private String poblacio;
 
 
-    /*
-
-
-
-    */
 
     public Adreca(String carrer, int numero, String poblacio) {
         this.carrer = carrer;

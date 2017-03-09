@@ -1,8 +1,10 @@
 
 package controlador;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import model.Vehicle;
 
 
@@ -29,7 +31,7 @@ public class Vehicle_Controlador {
         em.close();
     }
 
-   /* public void Modificar(Vehicle p) {
+    public void Modificar(Vehicle p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -104,5 +106,5 @@ public class Vehicle_Controlador {
     }
     public void imprimirPersona(Vehicle p) {
         System.out.println(p);
-    }*/
+    }
 }
