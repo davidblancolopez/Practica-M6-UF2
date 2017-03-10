@@ -62,8 +62,8 @@ public class Usuari implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.nom);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.nom);
         return hash;
     }
 
@@ -84,6 +84,9 @@ public class Usuari implements Serializable {
         }
         return true;
     }
+
+ 
+    
 
     @Override
     public String toString() {
