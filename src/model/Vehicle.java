@@ -98,11 +98,13 @@ public class Vehicle implements Serializable {
         this.propietari = propietari;
     }
 
-
-    public Vehicle(String matricula, String marca, int anyFabricacio) {
+    public Vehicle(Long idVehicle, String matricula, String marca, int anyFabricacio, Client propietari, Polissa polissa) {
+        this.idVehicle = idVehicle;
         this.matricula = matricula;
         this.marca = marca;
         this.anyFabricacio = anyFabricacio;
+        this.propietari = propietari;
+        this.polissa = polissa;
     }
 
     public Vehicle() {

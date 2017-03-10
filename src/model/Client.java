@@ -2,6 +2,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,21 +35,27 @@ public class Client implements Serializable {
     @Column(name = "nifClient", length = 9, nullable = false, unique = true)
     private String nif;
 
-    
     @Column(name = "nomClient", length = 50)
     private String nom;
 
+    @OneToMany (mappedBy = "propietari")
+    private List<Vehicle> llistaVechiles;
+    
+    @OneToMany (mappedBy = "client")
+    private List<Polissa> llistaPolises;
+    
     @Embedded
     private Adreca adreca;
-    
-  
-    
 
-    public Client(String nif, String nom) {
+    
+    
+    
+    public Client(Long id, String nif, String nom, Adreca adreca) {
+        this.id = id;
         this.nif = nif;
         this.nom = nom;
+        this.adreca = adreca;
     }
-
     
     public Client() {
    
@@ -89,6 +97,23 @@ public class Client implements Serializable {
         this.adreca = adreca;
     }
 
+    public List<Vehicle> getLlistaVechiles() {
+        return llistaVechiles;
+    }
+
+    public void setLlistaVechiles(List<Vehicle> llistaVechiles) {
+        this.llistaVechiles = llistaVechiles;
+    }
+
+    public List<Polissa> getLlistaPolises() {
+        return llistaPolises;
+    }
+
+    public void setLlistaPolises(List<Polissa> llistaPolises) {
+        this.llistaPolises = llistaPolises;
+    }
+
+    
     
     
     @Override

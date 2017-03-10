@@ -2,6 +2,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -31,16 +34,34 @@ public class Asseguradora implements Serializable {
     
     @Column(name = "nifAsseguradora", nullable = false)
     private String nifAsseguradora;
+    
+    @OneToMany (mappedBy = "asseguradora")
+    private List <Polissa> polissa;
 
+    
+    
+    
     public Asseguradora() {
     }
-    
-    public Asseguradora(String nomAsseguradora, String nifAsseguradora) {
+
+    public Asseguradora(Long idAsseguradora, String nomAsseguradora, String nifAsseguradora) {
+        this.idAsseguradora = idAsseguradora;
         this.nomAsseguradora = nomAsseguradora;
         this.nifAsseguradora = nifAsseguradora;
     }
+
     
     
+    
+    
+    
+    public List<Polissa> getPolissa() {
+        return polissa;
+    }
+
+    public void setPolissa(List<Polissa> polissa) {
+        this.polissa = polissa;
+    }
 
     public Long getIdAsseguradora() {
         return idAsseguradora;
@@ -66,28 +87,35 @@ public class Asseguradora implements Serializable {
         this.nifAsseguradora = nifAsseguradora;
     }
 
-    
-
-    
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (idAsseguradora != null ? idAsseguradora.hashCode() : 0);
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.idAsseguradora);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Asseguradora)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Asseguradora other = (Asseguradora) object;
-        if ((this.idAsseguradora == null && other.idAsseguradora != null) || (this.idAsseguradora != null && !this.idAsseguradora.equals(other.idAsseguradora))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Asseguradora other = (Asseguradora) obj;
+        if (!Objects.equals(this.idAsseguradora, other.idAsseguradora)) {
             return false;
         }
         return true;
     }
+
+    
+
+    
+    
 
     @Override
     public String toString() {
