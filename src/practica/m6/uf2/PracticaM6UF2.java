@@ -18,7 +18,7 @@ public class PracticaM6UF2 {
 
            
             Usuari usu1 = new Usuari();
-            usu1.setNom("DAVID");
+            usu1.setNom("Pepe");
             usu1.setContrasenya("1234");
             
             Vehicle vehi1 = new Vehicle();
@@ -47,11 +47,11 @@ public class PracticaM6UF2 {
 //            persona1.setDireccio(direccio1);
 //            persona2.setDireccio(direccio2);
 
-           // Usuari_Controller pc = new Usuari_Controller();
+            Usuari_Controlador pc = new Usuari_Controlador();
             Vehicle_Controlador vc = new Vehicle_Controlador();
 //
 //            //1er INSERTEM LES PERSONES A LA BBDD I DESPRES COMENTEM LES 3 LINIES SEGUENTES
-            //pc.Insertar(usu1);
+            pc.Insertar(usu1);
             vc.Insertar(vehi1);
 ////            pc.Insertar(persona2);
            // List<Usuari> lista = pc.ConsultaTots();
