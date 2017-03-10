@@ -27,7 +27,7 @@ public class Asseguradora implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idAsseguradora;
+    private long idAsseguradora;
     
     @Column(name = "nomAsseguradora", length = 100, nullable = false, unique = true)
     private String nomAsseguradora;

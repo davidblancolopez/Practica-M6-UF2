@@ -41,7 +41,7 @@ public class Polissa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idPolissa", unique = true)
-    private Long idPolissa;
+    private long idPolissa;
 
     @Column(name = "numeroPolissa", length = 10)
     private String numeroPolissa;

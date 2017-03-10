@@ -25,7 +25,7 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "personaId")
-    private Long id;
+    private long id;
     public static final String CONSULTA = "PersonaNombre";
     @Column(name = "personaNombre", length = 20, nullable = false)
     private String nombre;
@@ -104,23 +104,32 @@ public class Persona implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 5;
+        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Persona)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Persona other = (Persona) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (this.id != other.id) {
             return false;
         }
         return true;
     }
+
+    
+    
+    
 
     @Override
     public String toString() {
