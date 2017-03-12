@@ -12,7 +12,7 @@ public class PracticaM6UF2 {
         try {
 
             //Inicialitzem un calendar per a les dates.
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat data = new SimpleDateFormat("dd-MM-yyyy");
 
             //Creació dels objectes.
             Adreca adreca1 = new Adreca("Calle falsa", 123, "Un sitio");
@@ -127,42 +127,52 @@ public class PracticaM6UF2 {
             /**
              * ASSEGURADORA
              */
-            System.out.print("Insertem una asseguradora: ");
-            ac.Insertar(asseguradora1);//Insertem a la BBDD la asseguradora que hem creat
-            System.out.println(asseguradora1);
-            Asseguradora aseModificar = ac.Buscar(789L);//Busquem la asseguradora pel seu ID i la fiquem a un nou objecte Asseguradora
-            System.out.println("Modificar una asseguradora: ");
-            System.out.println("Abans: " + aseModificar);
-            aseModificar.setNom("Mahfre");
-            ac.Modificar(aseModificar);//Realitzem alguna modificacio a la asseguradora
-            System.out.println("Despres: " + aseModificar);
-            System.out.println("Cerca d'una asseguradora per la seva id: " + ac.Buscar(aseModificar.getAsseguradoraId()));//Cerca de asseguradora per ID
-            System.out.println("Eliminem una asseguradora: ");
-            ac.Eliminar(aseModificar);//Eliminem una asseguradora de la BBDD
-            System.out.println("Si busquem ara no la trobem: " + ac.Buscar(aseModificar.getAsseguradoraId()));
+            
+            //Inserció asseguradora.
+            ac.Insertar(asseguradora1);
+            
+            //Modificació asseguradora.
+            Asseguradora asseguradoraModificar = ac.Buscar(789L);//Busquem la asseguradora pel seu ID i la fiquem a un nou objecte Asseguradora
+            asseguradoraModificar.setNomAsseguradora("Seguro");
+            ac.Modificar(asseguradoraModificar);
+            
+            //Cerca asseguradora.(ID)
+            System.out.println(ac.Buscar(asseguradoraModificar.getIdAsseguradora()));
+            
+            //Eliminació asseguradora.
+            ac.Eliminar(asseguradoraModificar);//Eliminem una asseguradora de la BBDD
+            
 
             /**
              * POLISSA
              */
-            Vehicle vehi = pc.buscarVehicle(2301L);//Declarem un vehicle que cerquem
-            Asseguradora ase = pc.buscarAsseguradora(789L);//Declarem una Asseguradora que cerquem
-            Client cli = pc.buscarClient(2261L);//Declarem un client que cerquem
-            Polissa poliCreacio = new Polissa(0, "fesd", vehi, cli, sdf.parse("09-03-2018"), sdf.parse("09-03-2018"), true, 0, ase);//Creem una polissa nova amb les seves dades(i els objectes que hem cercat anteriorment. El camp de tipus esta en boolean i significa: true TERCERS, false TOT RISC
-            System.out.print("Insertem una polissa: ");
-            pc.Insertar(poliCreacio);//Insertem la polissa creada a la BBDD
-            System.out.println(poliCreacio);
-            Polissa poliModifi = pc.Buscar(2321L);//Creem un objecte polissa per modificar una polissa que cerquem.
-            System.out.println("Modifiquem una polissa: ");
-            System.out.println("Abans: " + poliModifi);
-            poliModifi.setNumero("4578");//Modifiquem algun atribut de la polissa
-            pc.Modificar(poliModifi);//Apliquem la modificacio a la Polissa
-            System.out.println("Despres: " + poliModifi);
-            System.out.println("Cerca d'una polissa: " + pc.Buscar(poliModifi.getIdPolissa()));//Realitzem una cerca d'una polissa per ID
-            System.out.println("Eliminem una polissa: ");
-            pc.Eliminar(pc.Buscar(poliModifi.getIdPolissa()));//Eliminem una polissa per ID
-            System.out.println("I com podem veure ja no existeix: " + pc.Buscar(poliModifi.getIdPolissa()));
+            
+            //Tenim que crear un vehicle, un client i una asseguradoraper la polissa.
+            Vehicle vehiclePolissa = pc.buscarVehicle(2301L);
+            Asseguradora asseguradoraPolissa = pc.buscarAsseguradora(789L);
+            Client clientPolissa = pc.buscarClient(2261L);
+            
+            //Es crea la polissa.
+            Polissa poliCreacio = new Polissa(0, "1234567890", vehiclePolissa, clientPolissa, data.parse("09-03-2018"), data.parse("09-03-2018"), true, 0, asseguradoraPolissa);
+            
+            //Inserció polissa
+            pc.Insertar(poliCreacio);
+
+            //Modificació polissa.
+            Polissa poliModifi = pc.Buscar(2321L);
+            poliModifi.setNumeroPolissa("4578");
+            pc.Modificar(poliModifi);
+
+            //Cerca polissa
+            System.out.println(pc.Buscar(poliModifi.getIdPolissa()));
+            
+            
+            //Eliminació polissa.
+            pc.Eliminar(pc.Buscar(poliModifi.getIdPolissa()));
+            
+            //Totes les polisses.
             System.out.println("Mostrar totes les polisses: ");
-            pc.imprimirLista(pc.ConsultaTots());//Imprimim totes les polisses.
+            pc.imprimirLista(pc.ConsultaTots());
 
         } catch (Exception ex) {
             ex.printStackTrace();
