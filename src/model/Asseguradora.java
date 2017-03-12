@@ -23,7 +23,7 @@ public class Asseguradora implements Serializable {
     private static final long serialVersionUID = 1L;
     
     //String on posem el nom de la consulta que es realitzara en aquesta entity.
-    public static final String consulta = "numPolissa";
+//    public static final String consulta = "numPolissa";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +32,7 @@ public class Asseguradora implements Serializable {
     @Column(name = "nomAsseguradora", length = 100, nullable = false, unique = true)
     private String nomAsseguradora;
     
-    @Column(name = "nifAsseguradora", nullable = false)
+    @Column(name = "nifAsseguradora")
     private String nifAsseguradora;
     
     @OneToMany (mappedBy = "asseguradora")
@@ -90,9 +90,11 @@ public class Asseguradora implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.idAsseguradora);
+        hash = 67 * hash + (int) (this.idAsseguradora ^ (this.idAsseguradora >>> 32));
         return hash;
     }
+
+    
 
     @Override
     public boolean equals(Object obj) {

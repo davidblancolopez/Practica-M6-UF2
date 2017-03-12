@@ -17,7 +17,7 @@ import javax.persistence.Table;
 //@NamedQueries({
 //@NamedQuery(name="nomClient", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
 //})
-@Table(name = "M6UF2_CLIENTS")
+@Table(name = "M6UF2_Clients")
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;

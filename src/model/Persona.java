@@ -12,12 +12,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
 @NamedQueries({
 @NamedQuery(name=Persona.CONSULTA, query="SELECT p FROM Persona p WHERE p.nombre=:nombre")})
-@Table(name = "M6UF2_PERSONES")
+@Table(name = "M6UF2_Persones")
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +27,10 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "personaId")
     private long id;
+    
+    @Transient
     public static final String CONSULTA = "PersonaNombre";
+    
     @Column(name = "personaNombre", length = 20, nullable = false)
     private String nombre;
 

@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Embeddable
-@Table(name = "Adreca")
+@Table(name = "M6UF2_Adreca")
 public class Adreca implements Serializable {
 
     private static final long serialVersionUID = 1L;

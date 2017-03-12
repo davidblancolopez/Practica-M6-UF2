@@ -28,6 +28,14 @@ import javax.persistence.Table;
 //@NamedQuery(name="TotesPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
 //})
 
+
+//@NamedQueries({
+//@NamedQuery(name="cercaPolizasCliente", query="SELECT p FROM Polissa p WHERE p.cliente.id:cliente"),
+//@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.vehicleId=:vehicleId"),
+//@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.asseguradoraId=:aseguradoraId"),
+//@NamedQuery(name="asignarClient", query="SELECT c FROM Client c WHERE c.id=:id"),
+//@NamedQuery(name="cercaPolizaPerVehicle", query="SELECT p FROM Polissa p WHERE p.vehicle.vehicleId=:vehicle")})
+
 public class Polissa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,20 +54,13 @@ public class Polissa implements Serializable {
     @Column(name = "numeroPolissa", length = 10)
     private String numeroPolissa;
     
-    
-    
-    
-    @Column(name = "prenedor", nullable = false)
-    private Client nom;
-    
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clientId", nullable = false)
-    private Client client;
-    
-    @OneToOne (fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehicleId", nullable =  false)
+    @OneToOne
+    @JoinColumn(name = "vehicle")
     private Vehicle vehicle;
+    
+    @ManyToOne 
+    @JoinColumn(name = "clientId")
+    private Client cliente;
     
     @Column (name = "dataInici", nullable = false)
     private Date dataInici;
@@ -67,22 +68,25 @@ public class Polissa implements Serializable {
     @Column (name = "dataFi", nullable = false)
     private Date dataFi;
     
-    @Column (name = "tipusPolissa", nullable = false)
+    @Column (name = "tipus")
     private boolean tipus;
     
-    @Column (name = "primaPolissa", nullable = false)
+    @Column (name = "prima")
     private double prima;
-
+    
     @ManyToOne
-    @JoinColumn(name = "idAsseguradora")
+    @JoinColumn(name = "asseguradoraId")
     private Asseguradora asseguradora;
     
+
+    
     //GETTER i SETTER
-    public Long getIdPolissa() {
+
+    public long getIdPolissa() {
         return idPolissa;
     }
 
-    public void setIdPolissa(Long idPolissa) {
+    public void setIdPolissa(long idPolissa) {
         this.idPolissa = idPolissa;
     }
 
@@ -94,28 +98,20 @@ public class Polissa implements Serializable {
         this.numeroPolissa = numeroPolissa;
     }
 
-    public Client getNom() {
-        return nom;
-    }
-
-    public void setNom(Client nom) {
-        this.nom = nom;
-    }
-
-    public Client getPrenedor() {
-        return client;
-    }
-
-    public void setPrenedor(Client prenedor) {
-        this.client = prenedor;
-    }
-
     public Vehicle getVehicle() {
         return vehicle;
     }
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Client getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Client cliente) {
+        this.cliente = cliente;
     }
 
     public Date getDataInici() {
@@ -150,14 +146,6 @@ public class Polissa implements Serializable {
         this.prima = prima;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Asseguradora getAsseguradora() {
         return asseguradora;
     }
@@ -165,12 +153,17 @@ public class Polissa implements Serializable {
     public void setAsseguradora(Asseguradora asseguradora) {
         this.asseguradora = asseguradora;
     }
+    
+    
+    
+    public Polissa() {
+    }
 
-    public Polissa(Long idPolissa, String numeroPolissa, Client client, Vehicle vehicle, Date dataInici, Date dataFi, boolean tipus, double prima, Asseguradora asseguradora) {
+    public Polissa(long idPolissa, String numero, Vehicle vehicle, Client cliente, Date dataInici, Date dataFi, boolean tipus, double prima, Asseguradora asseguradora) {
         this.idPolissa = idPolissa;
-        this.numeroPolissa = numeroPolissa;
-        this.client = client;
+        this.numeroPolissa = numero;
         this.vehicle = vehicle;
+        this.cliente = cliente;
         this.dataInici = dataInici;
         this.dataFi = dataFi;
         this.tipus = tipus;
@@ -178,21 +171,10 @@ public class Polissa implements Serializable {
         this.asseguradora = asseguradora;
     }
 
-    
-    
-    
-    
-
-    public Polissa() {
-    }
-
-
-    
-    
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.idPolissa);
+        int hash = 5;
+        hash = 97 * hash + (int) (this.idPolissa ^ (this.idPolissa >>> 32));
         return hash;
     }
 
@@ -208,7 +190,7 @@ public class Polissa implements Serializable {
             return false;
         }
         final Polissa other = (Polissa) obj;
-        if (!Objects.equals(this.idPolissa, other.idPolissa)) {
+        if (this.idPolissa != other.idPolissa) {
             return false;
         }
         return true;
@@ -216,12 +198,9 @@ public class Polissa implements Serializable {
 
     @Override
     public String toString() {
-        return "Polissa{" + "idPolissa=" + idPolissa + ", numeroPolissa=" + numeroPolissa + ", nom=" + nom + ", client=" + client + ", vehicle=" + vehicle + ", dataInici=" + dataInici + ", dataFi=" + dataFi + ", tipus=" + tipus + ", prima=" + prima + ", asseguradora=" + asseguradora + '}';
+        return "Polissa{" + "idPolissa=" + idPolissa + ", numeroPolissa=" + numeroPolissa + ", vehicle=" + vehicle + ", cliente=" + cliente + ", dataInici=" + dataInici + ", dataFi=" + dataFi + ", tipus=" + tipus + ", prima=" + prima + ", asseguradora=" + asseguradora + '}';
     }
 
 
-
-    
-    
     
 }

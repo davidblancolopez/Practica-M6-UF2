@@ -24,7 +24,7 @@ import javax.persistence.Table;
 //@NamedQuery(name="buscarMatriculaVehicle", query="SELECT v FROM M6UF2_VEHICLES v WHERE v.matriculaClient =: matricula")
 //})
 
-@Table(name = "M6UF2_VEHICLES", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})
+@Table(name = "M6UF2_Vehicles", indexes = {@Index(columnList = "matriculaVehicle", name = "indexMatricula")})
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class Vehicle implements Serializable {
     @Column(name = "matriculaVehicle", length = 7, nullable = false)
     private String matricula;
 
-    @Column(name = "marcaModelVehicle", length = 50)
+    @Column(name = "marcaModelVehicle", length = 150)
     private String marca;
     
     @Column(name = "anyFabricacioVehicle")
@@ -98,7 +98,7 @@ public class Vehicle implements Serializable {
         this.propietari = propietari;
     }
 
-    public Vehicle(Long idVehicle, String matricula, String marca, int anyFabricacio, Client propietari, Polissa polissa) {
+    public Vehicle(long idVehicle, String matricula, String marca, int anyFabricacio, Client propietari, Polissa polissa) {
         this.idVehicle = idVehicle;
         this.matricula = matricula;
         this.marca = marca;
@@ -107,15 +107,15 @@ public class Vehicle implements Serializable {
         this.polissa = polissa;
     }
 
+    
+    
     public Vehicle() {
     }
 
-    
-    
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.idVehicle);
+        int hash = 5;
+        hash = 67 * hash + (int) (this.idVehicle ^ (this.idVehicle >>> 32));
         return hash;
     }
 
@@ -131,11 +131,15 @@ public class Vehicle implements Serializable {
             return false;
         }
         final Vehicle other = (Vehicle) obj;
-        if (!Objects.equals(this.idVehicle, other.idVehicle)) {
+        if (this.idVehicle != other.idVehicle) {
             return false;
         }
         return true;
     }
+
+    
+    
+    
 
     @Override
     public String toString() {
