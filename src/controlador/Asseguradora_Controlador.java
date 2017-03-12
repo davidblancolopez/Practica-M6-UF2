@@ -93,39 +93,5 @@ public class Asseguradora_Controlador {
         return p;
     }
     
-    public Asseguradora BuscarPerNom(String nom) {
-        // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
-
-        System.out.println("Busqueda per nom");
-        //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery("ClientNom",Asseguradora.class);
-        query.setParameter("nom", nom);
-        Asseguradora p = (Asseguradora) query.getSingleResult();
-        System.out.println("close");
-        em.close();
-
-        return p;
-    }
-
-    public void Consulta() {
-        // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
-
-        System.out.println("Consulta");
-        //List<Persona> lista = (List<Persona>) em.createQuery("FROM Persona").getResultList();
-        Query q = em.createQuery("FROM Asseguradora");
-        List<Asseguradora> lista = (List<Asseguradora>) q.getResultList();
-        imprimirLista(lista);
-
-        System.out.println("close");
-        em.close();
-    }
-
-    public void imprimirLista(List<Asseguradora> lista) {
-        System.out.println("Numero d'asseguradores= " + lista.size());
-        for (int i = 0; i < lista.size(); i++) {
-            System.out.println(lista.get(i));
-        }
-    }
+   
 }

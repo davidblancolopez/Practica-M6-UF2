@@ -5,18 +5,20 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import model.Client;
+import model.*;
 
+/**
+ *
+ * @author Jorge
+ */
+public class Persona_Controlador {
 
-
-public class Client_Controlador {
-    
-    public void Insertar(Client c) {
+    public void Insertar(Persona p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
 
-        //El persistim a la base de dades
+        // El persistim a la base de dades
         //em.getTransaction().begin();
         EntityTransaction etx = em.getTransaction();
 
@@ -24,7 +26,7 @@ public class Client_Controlador {
         etx.begin();
 
         System.out.println("persist");
-        em.persist(c);
+        em.persist(p);
 
         System.out.println("commit");
         //em.getTransaction().commit();
@@ -34,7 +36,7 @@ public class Client_Controlador {
         em.close();
     }
 
-    public void Modificar(Client c) {
+    public void Modificar(Persona p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -47,7 +49,7 @@ public class Client_Controlador {
         etx.begin();
 
         System.out.println("merge");
-        em.merge(c);
+        em.merge(p);
 
         System.out.println("commit");
         //em.getTransaction().commit();
@@ -57,7 +59,7 @@ public class Client_Controlador {
         em.close();
     }
 
-    public void Eliminar(Client c) {
+    public void Eliminar(Persona p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -70,7 +72,7 @@ public class Client_Controlador {
         etx.begin();
 
         System.out.println("remove");
-        em.remove(em.contains(c) ? c : em.merge(c));
+        em.remove(em.contains(p) ? p : em.merge(p));
 
         System.out.println("commit");
         //em.getTransaction().commit();
@@ -80,13 +82,13 @@ public class Client_Controlador {
         em.close();
     }
 
-    public Client Buscar(Long id) {
+    public Persona Buscar(Long id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
 
-        Client p = (Client) em.find(Client.class, id);
+        Persona p = (Persona) em.find(Persona.class, id);
 
         System.out.println("close");
         em.close();
@@ -94,51 +96,43 @@ public class Client_Controlador {
         return p;
     }
     
-    /**
-     * Cerca del client per nom.
-     * @param nom
-     * @return 
-     */
-    public Client BuscarPerNom(String nom) {
+    public Persona BuscarPerNom(String nom) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
         System.out.println("Busqueda per nom");
         //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery("nomClient",Client.class);
+        Query query = em.createNamedQuery("PersonaNom",Persona.class);
         query.setParameter("nombre", nom);
-        Client p = (Client) query.getSingleResult();
-
+        Persona p = (Persona) query.getSingleResult();
         System.out.println("close");
         em.close();
 
         return p;
     }
 
-    public void Consulta() {
+    public List<Persona> ConsultaTots() {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
         System.out.println("Consulta");
         //List<Persona> lista = (List<Persona>) em.createQuery("FROM Persona").getResultList();
-        Query q = em.createQuery("FROM Asseguradora");
-        List<Client> lista = (List<Client>) q.getResultList();
-        imprimirLista(lista);
-
+        Query q = em.createQuery("FROM Persona");
+        List<Persona> lista = (List<Persona>) q.getResultList();
         System.out.println("close");
         em.close();
+        return lista;
     }
 
-    
-    public void imprimirPersona(Client c) {
-        System.out.println(c);
-    }
-    
-    
-    public void imprimirLista(List<Client> lista) {
-        System.out.println("Numero de clients= " + lista.size());
+    public void imprimirLista(List<Persona> lista) {
+        System.out.println("Numero d'empleats= " + lista.size());
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(lista.get(i));
         }
     }
+
+    public void imprimirPersona(Persona p) {
+        System.out.println(p);
+    }
+
 }
