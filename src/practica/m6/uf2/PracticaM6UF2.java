@@ -89,31 +89,41 @@ public class PracticaM6UF2 {
             //Eliminem el client.
             cc.Eliminar(cliEliminar);
             
-            //Cerca del clientper nom.
+            //Cerca del client per nom.
             cc.imprimirPersona(cc.BuscarPerNom("david"));
 
 
             /**
              * VEHICLE
              */
-            Client cliPerVehicle = vc.BuscarClient(2261L);//Busquem un client per asignar despres al vehicle
-            Vehicle vehi1 = new Vehicle(0, "213578", "AB", 1995, cliPerVehicle, null); //Declarem un objecte Vehicle i li asignem els seus valors, juntament amb el client que li hem assignat.
-            vc.Insertar(vehi1);//Insertem el vehicle a la BBDD
-            System.out.println(vehi1);
-            Vehicle vehiModificar = vc.Buscar(1721L); //Creem un nou objecte Vehicle apartir d'una cerca que realitzem a la BBDD per l'ID per modificar
-            System.out.println("Modifiquem un Vehicle: ");
-            System.out.println("Abans: " + vehiModificar);
-            vehiModificar.setMarcaModel("ABC");//Modifiquem algun valor del vehicle.
-            vc.Modificar(vehiModificar);//Apliquem la modificacio a la BBDD
-            System.out.println("Despres: " + vehiModificar);
-            Vehicle vehiPerEliminar = vc.Buscar(2141L);//Creem un nou objecte per eliminar un vehicle i cercem per ID
-            System.out.println("Eliminem un vehicle, pero abans hem d'eliminar una polissa ja que esta el vehicle vinculat a aquesta: ");
-            Polissa poliEliminar = pc.BuscarPerVehicle(vehiPerEliminar.getVehicleId()); //Busquem la polissa a la qual esta vinculat el vehicle
-            pc.Eliminar(poliEliminar);//Eliminem la polissa
-            vc.Eliminar(vehiPerEliminar);//Eliminem el vehicle un cop ja no te cap relacio amb cap altre taula.
-            System.out.println("Si busquem ara no existeix: " + vc.Buscar(vehiPerEliminar.getVehicleId()));
-            System.out.println(pc.BuscarPerVehicle(vc.Buscar(2141L).getVehicleId()));//Realitzem una cerca de polissas que te el vehicle
+            
+            //Inserció vehicle.
+            Client clientVehicle = vc.BuscarClient(2261L);
+            Vehicle vehi1 = new Vehicle(0, "1111AAA", "Ferrari", 2015, clientVehicle, null);
+            vc.Insertar(vehi1);
+            
+            //Modificació vehicle.
+            Vehicle vehicleModificar = vc.Buscar(1721L);
 
+            vehicleModificar.setMarca("Aston Martin");
+            vc.Modificar(vehicleModificar);
+            
+            
+            //Eliminació vehicle.
+            Vehicle vehiclePerEliminar = vc.Buscar(2141L);
+            Polissa poliEliminar = pc.BuscarPerVehicle(vehiclePerEliminar.getIdVehicle());
+            
+            //Eliminem la polissa del vehicle.
+            pc.Eliminar(poliEliminar);
+            
+            //Eliminem el vehicle.
+            vc.Eliminar(vehiclePerEliminar);
+            
+            //Cerca del vehicle.
+            System.out.println(pc.BuscarPerVehicle(vc.Buscar(2141L).getIdVehicle()));//Realitzem una cerca de polissas que te el vehicle
+
+            
+            
             /**
              * ASSEGURADORA
              */
