@@ -23,8 +23,8 @@ import javax.persistence.Table;
 
 @NamedQueries({
 @NamedQuery(name="cercaPolissasClient", query="SELECT p FROM Polissa p WHERE p.client.id=:id"),
-@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.vehicleId=:vehicleId"), 
-@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.asseguradoraId=:aseguradoraId"), 
+@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.idVehicle=:vehicleId"), 
+@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.idAsseguradora=:aseguradoraId"), 
 @NamedQuery(name="asignarClient", query="SELECT c FROM Client c WHERE c.id=:id"), 
 @NamedQuery(name="cercaPolissaPerVehicle", query="SELECT p FROM Polissa p WHERE p.vehicle.idVehicle=:idVehicle")})
 

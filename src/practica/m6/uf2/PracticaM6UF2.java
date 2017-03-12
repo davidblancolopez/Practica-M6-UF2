@@ -44,7 +44,7 @@ public class PracticaM6UF2 {
             uc.Modificar(usuariModificar);
 
             //Cerca d'un usuari.
-            System.out.println("Cerca d' un usuari per ID: " + uc.Buscar("david"));
+            System.out.println( uc.Buscar("david"));
 
             //Eliminem un usuari.
             Usuari usuEliminar = uc.Buscar("david");
@@ -67,7 +67,7 @@ public class PracticaM6UF2 {
             cc.Modificar(clientModificar);
             
             //Cerca d'un client.
-            System.out.println("Cerca de client per id: " + cc.Buscar(clientModificar.getId()));
+            System.out.println( cc.Buscar(clientModificar.getId()));
 
             
             //Eliminem un usuari.
@@ -153,14 +153,14 @@ public class PracticaM6UF2 {
             Client clientPolissa = pc.buscarClient(2261L);
             
             //Es crea la polissa.
-            Polissa poliCreacio = new Polissa(0, "1234567890", vehiclePolissa, clientPolissa, data.parse("09-03-2018"), data.parse("09-03-2018"), true, 0, asseguradoraPolissa);
+            Polissa poliCreacio = new Polissa(0, "1234567890", vehiclePolissa, clientPolissa, data.parse("12-03-2018"), data.parse("12-03-2018"), true, 0, asseguradoraPolissa);
             
             //Inserció polissa
             pc.Insertar(poliCreacio);
 
             //Modificació polissa.
             Polissa poliModifi = pc.Buscar(2321L);
-            poliModifi.setNumeroPolissa("4578");
+            poliModifi.setNumeroPolissa("45689");
             pc.Modificar(poliModifi);
 
             //Cerca polissa

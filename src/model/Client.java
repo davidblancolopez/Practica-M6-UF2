@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name="nomClient", query="SELECT p FROM M6UF2_Clients p WHERE p.nomClient =: nom")
+@NamedQuery(name="nomClient", query="SELECT p FROM Client p WHERE p.nom =: nom")
 })
 @Table(name = "M6UF2_Clients")
 public class Client implements Serializable {
