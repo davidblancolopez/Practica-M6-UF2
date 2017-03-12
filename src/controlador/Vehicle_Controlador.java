@@ -75,9 +75,13 @@ public class Vehicle_Controlador {
         return p;
     }
     
+    /**
+     * Metode que busca un client.
+     * @param id
+     * @return 
+     */
     public Client BuscarClient(long id) {
         EntityManager em = new EM_Controller().getEntityManager();
-        System.out.println("Cerca de client per id per asignar-lo a la un vehicle: ");
         Client c = (Client) em.find(Client.class, id);
         System.out.println(c);
         System.out.println("close");
