@@ -97,6 +97,8 @@ public class Polissa_Controlador {
     /**
      * Metode que serveix per a eliminar una polissa d'un client.
      *
+     * 
+     * FET
      * @param lista
      */
     public void EliminarPolissasClient(List lista) {
@@ -122,12 +124,14 @@ public class Polissa_Controlador {
     /**
      * Metode que realitza una cerca amb la id d'un vehicle que li arriba per parametre.
      * @param idVehicle
+     * 
+     * FET
      * @return
      */
     public Polissa BuscarPerVehicle(Long idVehicle) {
         EntityManager em = new EM_Controller().getEntityManager();
-        Query query = em.createNamedQuery("cercaPolizaPerVehicle", Polissa.class);
-        query.setParameter("vehicle", idVehicle);
+        Query query = em.createNamedQuery("cercaPolissaPerVehicle", Polissa.class);
+        query.setParameter("idVehicle", idVehicle);
         Polissa v = (Polissa) query.getSingleResult();
         System.out.println("close");
         em.close();
@@ -137,6 +141,8 @@ public class Polissa_Controlador {
     /**
      * Metode que realitza la cerca d'un vehicle amb la seva id.
      * @param vehicleId
+     * 
+     * FET
      * @return
      */
     public Vehicle buscarVehicle(long vehicleId) {
@@ -151,6 +157,8 @@ public class Polissa_Controlador {
     /**
      * Metode que realitza la cerca d'una asseguradora en concret amb la seva id.
      * @param aseguradoraId
+     * 
+     * FET
      * @return
      */
     public Asseguradora buscarAsseguradora(long aseguradoraId) {
@@ -164,6 +172,8 @@ public class Polissa_Controlador {
 
     /**
      * Metode que realitza la cerca d' un client amb la seva id.
+     * 
+     * FET
      * @param id
      * @return
      */
@@ -181,12 +191,13 @@ public class Polissa_Controlador {
      * Metode que realitza una cerca de les polisses d'un client utilitzant la id
      * de client.
      *
+     * FET
      * @param id
      * @return
      */
     public List BuscarPolissesPerClientLlista(long id) {
         EntityManager em = new EM_Controller().getEntityManager();
-        Query query = em.createNamedQuery("cercaPolizasCliente", Polissa.class);
+        Query query = em.createNamedQuery("cercaPolissasClient", Polissa.class);
         query.setParameter("id", id);
         List<Polissa> lista = (List<Polissa>) query.getResultList();
         System.out.println(lista);
@@ -197,6 +208,8 @@ public class Polissa_Controlador {
 
     /**
      * Metode que realitza la cerca de totes les polisses, retorna la llista.
+     * 
+     * 
      * @return
      */
     public List<Polissa> ConsultaTots() {

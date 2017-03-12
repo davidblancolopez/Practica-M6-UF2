@@ -20,19 +20,15 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table (name = "M6UF2_Polissas", indexes = {@Index(columnList = "clientId", name = "indexPrenedor")})
 
 @NamedQueries({
-@NamedQuery(name="BuscarPolissaClient", query="SELECT p FROM Polissa p WHERE p.clientId := idCliente"),
-@NamedQuery(name="BuscarPolissaVehicle", query="SELECT p FROM Vehicles p WHERE p.vehicle.idVehicle := idVehicle"),
-@NamedQuery(name="TotesPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
-})
+@NamedQuery(name="cercaPolissasClient", query="SELECT p FROM Polissa p WHERE p.client.id=:id"),
+@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.vehicleId=:vehicleId"), 
+@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.asseguradoraId=:aseguradoraId"), 
+@NamedQuery(name="asignarClient", query="SELECT c FROM Client c WHERE c.id=:id"), 
+@NamedQuery(name="cercaPolissaPerVehicle", query="SELECT p FROM Polissa p WHERE p.vehicle.idVehicle=:idVehicle")})
 
-
-//@NamedQueries({
-//@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.vehicleId=:vehicleId"),
-//@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.asseguradoraId=:aseguradoraId"),
-//@NamedQuery(name="asignarClient", query="SELECT c FROM Client c WHERE c.id=:id"),
+@Table (name = "M6UF2_Polissas", indexes = {@Index(columnList = "clientId", name = "indexPrenedor")})
 
 
 public class Polissa implements Serializable {
