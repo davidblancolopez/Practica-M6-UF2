@@ -47,7 +47,7 @@ public class Client implements Serializable {
     
     
     
-    public Client(Long id, String nif, String nom, Adreca adreca) {
+    public Client(long id, String nif, String nom, Adreca adreca) {
         this.id = id;
         this.nif = nif;
         this.nom = nom;

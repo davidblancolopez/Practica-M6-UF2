@@ -80,7 +80,7 @@ public class Usuari_Controlador {
         em.close();
     }
 
-    public Usuari Buscar(Long id) {
+    public Usuari Buscar(String id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 

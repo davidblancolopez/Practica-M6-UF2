@@ -44,7 +44,7 @@ public class Asseguradora implements Serializable {
     public Asseguradora() {
     }
 
-    public Asseguradora(Long idAsseguradora, String nomAsseguradora, String nifAsseguradora) {
+    public Asseguradora(long idAsseguradora, String nomAsseguradora, String nifAsseguradora) {
         this.idAsseguradora = idAsseguradora;
         this.nomAsseguradora = nomAsseguradora;
         this.nifAsseguradora = nifAsseguradora;
