@@ -21,30 +21,24 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "M6UF2_Polissas", indexes = {@Index(columnList = "prenedor", name = "indexPrenedor")})
-//@NamedQueries({
-//@NamedQuery(name="numPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa"),
-//@NamedQuery(name="numPolissaClient", query="SELECT p FROM Polisses p WHERE p.clientId := idClient"),
-//@NamedQuery(name="numPolissaVehicle", query="SELECT p FROM Polisses p WHERE p.vehicleId := idVehicle"),
-//@NamedQuery(name="TotesPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
-//})
+
+@NamedQueries({
+@NamedQuery(name="BuscarPolissaClient", query="SELECT p FROM Polissa p WHERE p.clientId := idCliente"),
+@NamedQuery(name="BuscarPolissaVehicle", query="SELECT p FROM Vehicles p WHERE p.vehicle.idVehicle := idVehicle"),
+@NamedQuery(name="TotesPolissa", query="SELECT p FROM Polisses p WHERE p.numPolissa := numPolissa")
+})
 
 
 //@NamedQueries({
-//@NamedQuery(name="cercaPolizasCliente", query="SELECT p FROM Polissa p WHERE p.cliente.id:cliente"),
 //@NamedQuery(name="asignarVehicle", query="SELECT v FROM Vehicle v WHERE v.vehicleId=:vehicleId"),
 //@NamedQuery(name="asignarAsseguradora", query="SELECT a FROM Asseguradora a WHERE a.asseguradoraId=:aseguradoraId"),
 //@NamedQuery(name="asignarClient", query="SELECT c FROM Client c WHERE c.id=:id"),
-//@NamedQuery(name="cercaPolizaPerVehicle", query="SELECT p FROM Polissa p WHERE p.vehicle.vehicleId=:vehicle")})
+
 
 public class Polissa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    //String on posem el nom de la consulta que es realitzara en aquesta entity.
-//    public static final String consultaPolises = "numPolissa";
-//    public static final String consultaPolisesClient = "numPolissaClient";
-//    public static final String consultaPolisesVehicle = "numPolissaClient";
-//    public static final String consultaTotesPolises= "TotesPolissa";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,7 +54,7 @@ public class Polissa implements Serializable {
     
     @ManyToOne 
     @JoinColumn(name = "clientId")
-    private Client cliente;
+    private Client client;
     
     @Column (name = "dataInici", nullable = false)
     private Date dataInici;
@@ -107,11 +101,11 @@ public class Polissa implements Serializable {
     }
 
     public Client getCliente() {
-        return cliente;
+        return client;
     }
 
     public void setCliente(Client cliente) {
-        this.cliente = cliente;
+        this.client = cliente;
     }
 
     public Date getDataInici() {
@@ -163,7 +157,7 @@ public class Polissa implements Serializable {
         this.idPolissa = idPolissa;
         this.numeroPolissa = numero;
         this.vehicle = vehicle;
-        this.cliente = cliente;
+        this.client = cliente;
         this.dataInici = dataInici;
         this.dataFi = dataFi;
         this.tipus = tipus;
@@ -198,7 +192,7 @@ public class Polissa implements Serializable {
 
     @Override
     public String toString() {
-        return "Polissa{" + "idPolissa=" + idPolissa + ", numeroPolissa=" + numeroPolissa + ", vehicle=" + vehicle + ", cliente=" + cliente + ", dataInici=" + dataInici + ", dataFi=" + dataFi + ", tipus=" + tipus + ", prima=" + prima + ", asseguradora=" + asseguradora + '}';
+        return "Polissa{" + "idPolissa=" + idPolissa + ", numeroPolissa=" + numeroPolissa + ", vehicle=" + vehicle + ", cliente=" + client + ", dataInici=" + dataInici + ", dataFi=" + dataFi + ", tipus=" + tipus + ", prima=" + prima + ", asseguradora=" + asseguradora + '}';
     }
 
 

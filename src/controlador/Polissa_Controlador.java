@@ -101,9 +101,9 @@ public class Polissa_Controlador {
      */
     public void BuscarPerClient(Client client) {
         EntityManager em = new EM_Controller().getEntityManager();
-        System.out.println("Busqueda per id de Client");
-        Query query = em.createNamedQuery("cercaPolizasCliente", Polissa.class);
-        query.setParameter("cliente", client.getId());
+        System.out.println("Busqueda per id de client");
+        Query query = em.createNamedQuery("BuscarPolissaClient", Polissa.class);
+        query.setParameter("idCliente", client.getId());
         List<Polissa> lista = (List<Polissa>) query.getResultList();
         System.out.println(lista);
         System.out.println("close");
@@ -121,7 +121,7 @@ public class Polissa_Controlador {
 
         System.out.println("Busqueda per vehicle");
         //Query query = em.createNamedQuery("PersonaNom",Persona.class);
-        Query query = em.createNamedQuery(Polissa.consultaPolisesVehicle,Polissa.class);
+        Query query = em.createNamedQuery("BuscarPolissaVehicle",Polissa.class);
         query.setParameter("idVehicle", idVehicle);
         Polissa p = (Polissa) query.getSingleResult();
 
